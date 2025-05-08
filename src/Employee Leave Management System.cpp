@@ -149,13 +149,13 @@ public:
                 bool found = false;
                 for (int i = 0; i < curArr; i++)
                 {
-                    if (temp->id == empId[i] && temp->status == "Accept")
+                    if (temp->id == empId[i])
                     {
                         found = true;
                         break;
                     }
                 }
-                if (!found)
+                if (!found && temp->status == "Accept")
                 {
                     empId[curArr] = temp->id;
                     empName[curArr] = temp->name;
