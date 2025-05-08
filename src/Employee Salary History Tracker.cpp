@@ -15,13 +15,13 @@ public:
     employeeTracker *arrow;
 };
 
-class employeeSingleLinkedList
+class employeeSalaryTrack
 {
 private:
     employeeTracker *head;
 
 public:
-    employeeSingleLinkedList()
+    employeeSalaryTrack()
     {
         head = NULL;
     }
@@ -187,7 +187,7 @@ int main()
     int id, process;
     double previousSalary, bonus;
     string name, dateOfChange;
-    employeeSingleLinkedList trackEmployee;
+    employeeSalaryTrack trackEmployee;
     do
     {
         cout << "===Employee Salary History Tracker===" << endl;
