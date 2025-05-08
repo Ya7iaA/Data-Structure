@@ -128,6 +128,45 @@ public:
             }
         }
     }
+    void displayLeaveEmployee()
+    {
+        if (isEmpty())
+        {
+            cout << "No Employee Founded" << endl;
+        }
+        else
+        {
+            employeeLeave *temp = head;
+            int empId[100];
+            string empName[100];
+            int curArr = 0;
+            while (temp != NULL)
+            {
+                bool found = false;
+                for (int i = 0; i < curArr; i++)
+                {
+                    if (temp->id == empId[i] && temp->status == "Accept")
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    empId[curArr] = temp->id;
+                    empName[curArr] = temp->name;
+                    curArr++;
+                }
+                temp = temp->arrow;
+            }
+            for (int i = 0; i < curArr; i++)
+            {
+                cout << "Employee ID: " << empId[i] << endl
+                     << "Employee Name: " << empName[i] << endl;
+                cout << "---------------------------" << endl;
+            }
+        }
+    }
     void displayRecord(int id)
     {
         if (doSearch(id))
@@ -138,7 +177,11 @@ public:
                 if (temp->id == id)
                 {
                     cout << "Employee ID: " << temp->id << endl
-                         << "Employee Name: " << temp->name << endl;
+                         << "Employee Name: " << temp->name << endl
+                         << "Leave Type: " << temp->type << endl
+                         << "Date Of Start: " << temp->dateOfStart << endl
+                         << "Date Of End: " << temp->dateOfEnd << endl
+                         << "Leave Status: " << temp->status << endl;
                     cout << "---------------------------" << endl;
                     temp = temp->arrow;
                 }
@@ -165,7 +208,11 @@ public:
             while (temp != NULL)
             {
                 cout << "Employee ID: " << temp->id << endl
-                     << "Employee Name: " << temp->name << endl;
+                     << "Employee Name: " << temp->name << endl
+                     << "Leave Type: " << temp->type << endl
+                     << "Date Of Start: " << temp->dateOfStart << endl
+                     << "Date Of End: " << temp->dateOfEnd << endl
+                     << "Leave Status: " << temp->status << endl;
                 cout << "---------------------------" << endl;
                 temp = temp->arrow;
             }
@@ -186,6 +233,7 @@ int main()
              << "3 => Display Record With ID" << endl
              << "4 => Display All Record" << endl
              << "5 => Display All Employee" << endl
+             << "6 => Display Leave Employee" << endl
              << "0 => Exit Program" << endl
              << "------------------------------------" << endl;
         cout << "Enter Process: ";
@@ -228,6 +276,10 @@ int main()
             break;
         case 5:
             leaveEmployee.displayAllEmployee();
+            cout << "------------------------------------" << endl;
+            break;
+        case 6:
+            leaveEmployee.displayLeaveEmployee();
             cout << "------------------------------------" << endl;
             break;
         case 0:
