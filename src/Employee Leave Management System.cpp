@@ -163,11 +163,18 @@ public:
                 }
                 temp = temp->arrow;
             }
-            for (int i = 0; i < curArr; i++)
+            if (curArr == 0)
             {
-                cout << "Employee ID: " << empId[i] << endl
-                     << "Employee Name: " << empName[i] << endl;
-                cout << "---------------------------" << endl;
+                cout << "No Leave Employee" << endl;
+            }
+            else
+            {
+                for (int i = 0; i < curArr; i++)
+                {
+                    cout << "Employee ID: " << empId[i] << endl
+                         << "Employee Name: " << empName[i] << endl;
+                    cout << "---------------------------" << endl;
+                }
             }
         }
     }
