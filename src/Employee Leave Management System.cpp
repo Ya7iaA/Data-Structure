@@ -37,6 +37,10 @@ public:
         else
         {
             employeeLeave *newNode = new employeeLeave();
+            newNode->type = "None";
+            newNode->dateOfEnd = "None";
+            newNode->dateOfStart = "None";
+            newNode->status = "None";
             newNode->id = id;
             newNode->name = name;
             newNode->arrow = head;
