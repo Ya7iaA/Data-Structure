@@ -2,6 +2,8 @@
 #include <string>
 using namespace std;
 
+// Using Linkedlist to track employee leave
+
 class employeeLeave
 {
 public:
