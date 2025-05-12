@@ -29,6 +29,19 @@ public:
     {
         return (head == NULL);
     }
+    double getPreviousSalary(int id)
+    {
+        employeeTracker *temp = head;
+        while (temp != NULL)
+        {
+            if (temp->id == id)
+            {
+                return (temp->previousSalary + temp->bonus);
+            }
+            temp = temp->arrow;
+        }
+        return 0.0;
+    }
     void addEmployee(int id, string name, string dateOfChange, double previousSalary)
     {
         if (doSearch(id))
@@ -73,7 +86,7 @@ public:
         }
         return "";
     }
-    void insertRecord(int id, double previousSalary, double bonus, string dateOfChange)
+    void insertRecord(int id, double bonus, string dateOfChange)
     {
         if (!doSearch(id))
         {
@@ -82,7 +95,7 @@ public:
         else
         {
             employeeTracker *newNode = new employeeTracker();
-            newNode->previousSalary = previousSalary;
+            newNode->previousSalary = getPreviousSalary(id);
             newNode->dateOfChange = dateOfChange;
             newNode->bonus = bonus;
             newNode->id = id;
@@ -218,13 +231,11 @@ int main()
         case 2:
             cout << "Enter ID: ";
             cin >> id;
-            cout << "Enter Previous Salary: ";
-            cin >> previousSalary;
             cout << "Entre Bonus: ";
             cin >> bonus;
             cout << "Entre Date: ";
             cin >> dateOfChange;
-            trackEmployee.insertRecord(id, previousSalary, bonus, dateOfChange);
+            trackEmployee.insertRecord(id, bonus, dateOfChange);
             cout << "------------------------------------" << endl;
             break;
         case 3:
